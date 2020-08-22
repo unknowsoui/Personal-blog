@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class JSONUtil {
 
@@ -46,6 +47,14 @@ public class JSONUtil {
             return get().readValue(json,clazz);
         } catch (IOException e) {
             throw new RuntimeException("JSON反序列化失败，JSON字符串为" + json,e);
+        }
+    }
+
+    public static <T> T deserialize(InputStream inputStream, Class<T> clazz){
+        try {
+            return get().readValue(inputStream,clazz);
+        } catch (IOException e) {
+            throw new RuntimeException("JSON反序列化失败",e);
         }
     }
 }

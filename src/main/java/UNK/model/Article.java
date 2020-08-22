@@ -19,4 +19,7 @@ public class Article {
     private Integer userId;
 
     private Date createTime;
+
+    //新增文章所需要的字段
+    private String userAccout;
 }
